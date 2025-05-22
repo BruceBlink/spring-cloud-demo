@@ -10,11 +10,17 @@
     </parent>
 
     <artifactId>config-server</artifactId>
-
+    <!-- 配置中心服务 -->
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-config-server</artifactId>
+        </dependency>
+
+        <!-- Eureka 客户端 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
         <!-- Spring Boot 基础依赖（含 logging） -->
