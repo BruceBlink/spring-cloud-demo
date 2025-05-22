@@ -1,0 +1,26 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: gateway-server
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true  # 启用通过服务名自动转发
+          lower-case-service-id: true
+      routes:
+        - id: config-client
+          uri: lb://config-client
+          predicates:
+            - Path=/config/**
+          filters:
+            - StripPrefix=1  # 去掉 /config 前缀
+    # 如果你用 Config Server，可以添加 config 配置
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

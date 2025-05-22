@@ -8,7 +8,7 @@ spring:
     config:
       server:
         git:
-          uri: file:\\${user.home}\\config-repo\\
+          uri: file://${user.home}/config-repo/
           default-label: master  # 指定默认分支
 
 eureka:
