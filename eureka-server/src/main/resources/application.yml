@@ -7,5 +7,7 @@ spring:
 
 eureka:
   client:
-    register-with-eureka: false
-    fetch-registry: false
+    register-with-eureka: false   # Eureka Server 不注册自己
+    fetch-registry: false          # 不从自己拉取服务注册表
+  # server:
+    # enable-self-preservation: false  # 关闭自我保护模式，方便开发环境测试
