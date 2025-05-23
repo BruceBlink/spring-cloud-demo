@@ -1,12 +1,16 @@
 spring:
   application:
-    name: user-service  # 对应 config-server 中的配置文件名称，比如 user-service.yml 或 user-service-dev.yml
+    name: user-service # 你的服务名称
+  profiles:
+    active: dev        # 激活的 profile
 
   config:
-    import: "configserver:"  # 注意用引号，否则可能会触发 YAML 的语法错误
+    import: optional:configserver:http://localhost:8888  # （推荐）
 
-  cloud:
-    config:
-      uri: http://localhost:8888  # 你的 config-server 地址
-      profile: dev               # 对应远程配置文件中的环境，如 user-service-dev.yml
-      label: main                # Git 分支（如果你用 Git 存配置），可以是 main 或 master 等
+# 如果 user-service 还需要注册到 Eureka (推荐)
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka # Eureka Server 的地址
+    register-with-eureka: true # 将 user-service 注册到 Eureka
+    fetch-registry: true     # 从 Eureka 获取服务列表          # Git 分支（如果你用 Git 存配置），可以是 main 或 master 等
