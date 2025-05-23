@@ -10,6 +10,8 @@ spring:
         git:
           uri: file://${user.home}/config-repo/
           default-label: master  # 指定默认分支
+          search-paths:
+            - '{application}' # 或者更通用的 '{application}/**' 如果你的配置文件可能在更深的子目录
 
 eureka:
   client:
