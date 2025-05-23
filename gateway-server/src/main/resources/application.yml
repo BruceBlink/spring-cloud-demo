@@ -19,6 +19,12 @@ spring:
           filters:
             - StripPrefix=1  # 去掉 /config 前缀
     # 如果你用 Config Server，可以添加 config 配置
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user-service/**    # 拦截 user-service 相关请求
+          filters:
+            - StripPrefix=1            # 去掉 /user-service 前缀
 
 eureka:
   client:
