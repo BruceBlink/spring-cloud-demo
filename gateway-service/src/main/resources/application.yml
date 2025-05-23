@@ -12,17 +12,16 @@ spring:
           enabled: true  # 启用通过服务名自动转发
           lower-case-service-id: true
       routes:
-        - id: config-client
-          uri: lb://config-client
+        - id: config-service
+          uri: lb://config-service
           predicates:
             - Path=/config/**
           filters:
             - StripPrefix=1  # 去掉 /config 前缀
-    # 如果你用 Config Server，可以添加 config 配置
         - id: user-service
           uri: lb://user-service
           predicates:
-            - Path=/user-service/**    # 拦截 user-service 相关请求
+            - Path=/user-service/**    # 拦截 /user-service 相关请求 然后使用user-service服务去处理
           filters:
             - StripPrefix=1            # 去掉 /user-service 前缀
 
