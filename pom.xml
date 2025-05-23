@@ -10,9 +10,9 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>eureka-server</module>
-        <module>config-server</module>
-        <module>gateway-server</module>
+        <module>eureka-service</module>
+        <module>config-service</module>
+        <module>gateway-service</module>
         <module>user-service</module>
     </modules>
 
